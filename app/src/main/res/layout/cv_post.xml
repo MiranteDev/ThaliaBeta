@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="8dp"
+    android:layout_marginTop="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="50dp">
+
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="50dp"
+                android:src="@drawable/me"
+                android:id="@+id/cv_post_usericon"
+                app:civ_border_color="@android:color/white"
+                app:civ_border_width="1dp"
+                app:civ_border_overlay="true"
+                android:layout_height="50dp" />
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_marginLeft="5dp"
+                android:layout_height="match_parent">
+
+
+                <TextView
+                    android:id="@+id/cv_post_username"
+                    android:layout_width="wrap_content"
+                    android:fontFamily="@font/antic"
+                    android:text="João Mirante"
+                    android:textColor="@color/preto"
+                    android:textSize="14dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/cv_post_userwatchers"
+                    android:layout_width="wrap_content"
+                    android:fontFamily="@font/antic"
+                    android:text="50.000 watchers"
+                    android:textColor="@color/preto"
+                    android:textSize="10dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/cv_post_timecreate"
+                    android:layout_width="wrap_content"
+                    android:fontFamily="@font/antic"
+                    android:text="8 m"
+                    android:textColor="@color/preto"
+                    android:textSize="12dp"
+                    android:layout_height="wrap_content" />
+
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:id="@+id/cv_post_textcontent"
+                android:layout_width="match_parent"
+                android:fontFamily="@font/antic"
+                android:textColor="@color/preto"
+                android:text="sgd sdfsod jdhoasihd fjosdjfoasd onfdasofnsk ansdoansdioa fnsdofaosjdas fdsojfpasdj"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content">
+
+
+            <ImageView
+                android:id="@+id/cv_post_mediacontent"
+                android:layout_width="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/me"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/cv_post_likes"
+                android:layout_width="wrap_content"
+                android:text="5 likes"
+                android:fontFamily="@font/antic"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_height="1dp"
+            android:background="#d1d1d1"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:scaleType="fitCenter"
+                    android:background="@drawable/like"
+                    android:layout_height="20dp"/>
+                <TextView
+                    android:id="@+id/cv_post_btlike"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:text="Like"
+                    android:textColor="@color/preto"
+                    android:textSize="16dp"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/antic"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:scaleType="fitCenter"
+                    android:background="@drawable/comment"
+                    android:layout_height="20dp"/>
+                <TextView
+                    android:id="@+id/cv_post_btcomment"
+                    android:layout_width="wrap_content"
+                    android:text="Comment"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/preto"
+                    android:textSize="16dp"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/antic"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>
