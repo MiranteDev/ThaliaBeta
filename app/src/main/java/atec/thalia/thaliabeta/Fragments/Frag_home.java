@@ -1,6 +1,7 @@
 package atec.thalia.thaliabeta.Fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -12,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +30,7 @@ import net.eunainter.r2std2oid.Skyrunner;
 import java.util.ArrayList;
 import java.util.List;
 
+import atec.thalia.thaliabeta.Activity.Av_addPost;
 import atec.thalia.thaliabeta.Model.Media;
 import atec.thalia.thaliabeta.Model.Post;
 import atec.thalia.thaliabeta.Model.User;
@@ -46,6 +49,7 @@ public class Frag_home extends Fragment implements RestObserver{
     SwipeRefreshLayout swipeRefreshLayout;
     Skyrunner mSky;
     ArrayList<Post> postArrayList;
+    Button open;
 
 
     public Frag_home() {
@@ -62,6 +66,16 @@ public class Frag_home extends Fragment implements RestObserver{
         recyclerView = v.findViewById(R.id.fragH_rv);
 
         swipeRefreshLayout = v.findViewById(R.id.swiperefresh);
+
+        open = v.findViewById(R.id.open);
+
+        open.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity().getApplicationContext(), Av_addPost.class);
+                startActivity(intent);
+            }
+        });
 
         mSky = new Skyrunner(20);
         mSky.addObserver(this);
@@ -114,6 +128,7 @@ public class Frag_home extends Fragment implements RestObserver{
 
         RequestR2D2 req = new RequestR2D2(WebServices.SERVIDOR+WebServices.GETPOSTS,null,RequestR2D2.GET);
 
+
         mSky.sendRequest(req,Skyrunner.RequestTag.KPOSONE);
 
 
@@ -127,8 +142,7 @@ public class Frag_home extends Fragment implements RestObserver{
 
     public void getPosts(){
         RequestR2D2 req = new RequestR2D2(WebServices.SERVIDOR+WebServices.GETPOSTS,null,RequestR2D2.GET);
-
-        mSky.sendRequest(req,Skyrunner.RequestTag.KPOSONE);
+        mSky.sendRequest(req,Skyrunner.RequestTag.KPOSTWO);
 
     }
 
@@ -149,6 +163,12 @@ public class Frag_home extends Fragment implements RestObserver{
                }
 
                 break;
+
+            case Skyrunner.RequestTag.KPOSTWO:
+
+                postArrayList = new Gson().fromJson(response.getJSONArray().toString(),new TypeToken<List<Post>>(){}.getType());
+                adapterPost.notifyDataSetChanged();
+            break;
         }
     }
 
