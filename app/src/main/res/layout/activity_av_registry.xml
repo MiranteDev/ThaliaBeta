@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="atec.thalia.thaliabeta.Activity.Av_registry">
+
+    <Button
+        android:layout_width="match_parent"
+        android:text="Registry"
+        android:id="@+id/avR_btregistry"
+        android:layout_height="wrap_content" />
+
+</android.support.constraint.ConstraintLayout>

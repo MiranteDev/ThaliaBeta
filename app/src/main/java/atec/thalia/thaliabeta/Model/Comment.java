@@ -14,6 +14,9 @@ public class Comment {
 		this.date = date;
 	}
 
+	public Comment() {
+		super();
+	}
 
 	public User getUser() {
 		return user;

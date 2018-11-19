@@ -27,10 +27,14 @@ import net.eunainter.r2std2oid.ResponseR2D2;
 import net.eunainter.r2std2oid.RestObserver;
 import net.eunainter.r2std2oid.Skyrunner;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import atec.thalia.thaliabeta.Activity.Av_addPost;
+import atec.thalia.thaliabeta.AppThalia;
 import atec.thalia.thaliabeta.Model.Media;
 import atec.thalia.thaliabeta.Model.Post;
 import atec.thalia.thaliabeta.Model.User;
@@ -49,7 +53,8 @@ public class Frag_home extends Fragment implements RestObserver{
     SwipeRefreshLayout swipeRefreshLayout;
     Skyrunner mSky;
     ArrayList<Post> postArrayList;
-    Button open;
+    Button open,enviarpost;
+    AppThalia app;
 
 
     public Frag_home() {
@@ -67,6 +72,7 @@ public class Frag_home extends Fragment implements RestObserver{
 
         swipeRefreshLayout = v.findViewById(R.id.swiperefresh);
 
+        app = ((AppThalia)getActivity().getApplication());
         open = v.findViewById(R.id.open);
 
         open.setOnClickListener(new View.OnClickListener() {
@@ -77,8 +83,34 @@ public class Frag_home extends Fragment implements RestObserver{
             }
         });
 
+
+
         mSky = new Skyrunner(20);
         mSky.addObserver(this);
+
+        enviarpost = v.findViewById(R.id.eviarpost);
+        enviarpost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(app.getPost()!=null) {
+
+
+                    JSONObject jsonObject = null;
+                    try {
+                        jsonObject = new JSONObject(new Gson().toJson(app.getPost()));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                    RequestR2D2 req = new RequestR2D2(WebServices.SERVIDOR + WebServices.ADDPOST, jsonObject, RequestR2D2.POST);
+
+
+                    mSky.sendRequest(req, Skyrunner.RequestTag.KPOSTHREE);
+
+                }
+            }
+        });
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -132,7 +164,7 @@ public class Frag_home extends Fragment implements RestObserver{
         mSky.sendRequest(req,Skyrunner.RequestTag.KPOSONE);
 
 
-
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
 
 
 
@@ -154,8 +186,6 @@ public class Frag_home extends Fragment implements RestObserver{
 
                 postArrayList = new Gson().fromJson(response.getJSONArray().toString(),new TypeToken<List<Post>>(){}.getType());
                 adapterPost = new RvAdapterPost(postArrayList);
-
-                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
                 recyclerView.setAdapter(adapterPost);
 
                for(Post p:postArrayList){
@@ -168,7 +198,15 @@ public class Frag_home extends Fragment implements RestObserver{
 
                 postArrayList = new Gson().fromJson(response.getJSONArray().toString(),new TypeToken<List<Post>>(){}.getType());
                 adapterPost.notifyDataSetChanged();
+
+
             break;
+
+            case Skyrunner.RequestTag.KPOSTHREE:
+
+                app.setPost(null);
+
+                break;
         }
     }
 
@@ -186,6 +224,8 @@ public class Frag_home extends Fragment implements RestObserver{
     public void requestTimeout() {
 
     }
+
+
 
     public class RvAdapterPost extends RecyclerView.Adapter<RvAdapterPost.VHPost>{
 

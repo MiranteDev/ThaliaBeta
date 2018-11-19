@@ -41,6 +41,11 @@ public class User {
 
 
 	public User() {
+
+		preferences = new ArrayList<>();
+		this.hashes = new ArrayList<>();
+		this.watched = new ArrayList<>();
+		this.watching = new ArrayList<>();
 	}
 
 	public User(String firstname, String lastname, String email, String pathimage, String birthdate, int gender,

@@ -10,7 +10,7 @@ public class Post {
 	date,
 	content;
 	
-	int likes,dislikes;
+		int likes,dislikes;
 	
 	User creator;
 	
@@ -18,15 +18,22 @@ public class Post {
 	
 	Media media;
 
-	public Post(String title, String date, String content, User creator, Media media) {
+	public Post() {
+		comments=new ArrayList<>();
+
+	}
+
+
+
+	public Post(String title, String date, String content,int likes,int dislikes) {
 		super();
 		this.title = title;
 		this.date = date;
 		this.content = content;
-		this.likes = 0;
-		this.dislikes = 0;
-		this.creator = creator;
-		this.media = media;
+		this.likes = likes;
+		this.dislikes = dislikes;
+		this.creator = new User();
+		this.media = new Media();
 		this.comments = new ArrayList<>();
 	}
 

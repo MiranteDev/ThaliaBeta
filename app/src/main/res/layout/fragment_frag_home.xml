@@ -19,6 +19,11 @@
 
             <Button
                 android:layout_width="match_parent"
+                android:text="Enviar Post"
+                android:id="@+id/eviarpost"
+                android:layout_height="wrap_content" />
+            <Button
+                android:layout_width="match_parent"
                 android:text="open"
                 android:id="@+id/open"
                 android:layout_height="50dp" />

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/preto"
+    tools:context="atec.thalia.thaliabeta.Activity.Av_login">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:textColorHint="@android:color/white"
+        android:layout_marginTop="100dp"
+        android:layout_height="50dp">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:textColor="@android:color/white"
+            android:textColorHighlight="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:fontFamily="@font/antic"
+            android:inputType="textEmailAddress"
+            android:id="@+id/avL_email"
+            android:hint="Email"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        app:passwordToggleEnabled="true"
+
+        android:textColorHint="@android:color/white"
+        app:passwordToggleTint="@android:color/darker_gray"
+        android:layout_height="60dp">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:fontFamily="@font/antic"
+            android:layout_height="50dp"
+            android:textColor="@android:color/white"
+            android:textColorHighlight="@android:color/white"
+            android:textSize="18dp"
+            android:textColorHint="@android:color/white"
+            android:id="@+id/avL_password"
+            android:inputType="textPassword"
+            android:hint="Password"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:text="Login"
+        android:id="@+id/avL_btlogin"
+        android:fontFamily="@font/antic"
+        android:layout_height="wrap_content" />
+    <Button
+        android:layout_width="match_parent"
+        android:text="Registro"
+        android:id="@+id/avL_btregistro"
+        android:fontFamily="@font/antic"
+        android:layout_height="wrap_content" />
+</LinearLayout>
+
+</RelativeLayout>

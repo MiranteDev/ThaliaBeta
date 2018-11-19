@@ -14,6 +14,10 @@ public class Media {
 		this.path_file = path_file;
 	}
 
+	public Media() {
+		super();
+	}
+
 	public int getType_media() {
 		return type_media;
 	}
